@@ -93,6 +93,7 @@ def terminate_process(name="firefox.exe"):
 def open_relief_valve():
     """ Terminate all processes defined in 'shutdown_processes.' Activated when memory usage exceeds trigger value."""
     #print()
+    message_opened()
     for process in config["DEFAULT"]["shutdown_processes"].split(" "):
         terminate_process(process)
             
