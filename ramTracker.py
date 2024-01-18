@@ -118,19 +118,18 @@ class memory_manager:
         self.run_update=True
         self.update()
     def update(self):
-        
-        ram_cutoff=float(config["DEFAULT"]["RAM_cutoff"])
-        #ram_cutoff=40.0
-        check_frequency=float(config['DEFAULT']["check_frequency"])
-        memory=psutil.virtual_memory()
-        #print("{}: {}%/{}% RAM consumed.".format(datetime.now(),memory.percent,self.ram_cutoff))
-        print("Memory Relief Valve({}%/{}%)".format(memory.percent,ram_cutoff))
-        if memory.percent>=ram_cutoff:
-            open_relief_valve()
-                
-        sleep(1)
-        if self.run_update:
-            self.update()
+        while True:
+            ram_cutoff=float(config["DEFAULT"]["RAM_cutoff"])
+            #ram_cutoff=40.0
+            check_frequency=float(config['DEFAULT']["check_frequency"])
+            memory=psutil.virtual_memory()
+            #print("{}: {}%/{}% RAM consumed.".format(datetime.now(),memory.percent,self.ram_cutoff))
+            print("Memory Relief Valve({}%/{}%)".format(memory.percent,ram_cutoff))
+            if memory.percent>=ram_cutoff:
+                open_relief_valve()
+                    
+            sleep(1)
+            
 
 def main():
 
