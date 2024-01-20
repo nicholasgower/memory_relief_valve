@@ -96,7 +96,7 @@ def open_relief_valve():
     message_opened()
     for process in config["DEFAULT"]["shutdown_processes"].split(" "):
         terminate_process(process)
-            
+    sleep(60)        
 def message_start():
     toaster = WindowsToaster('Memory Relief Valve')
     newToast = Toast()
